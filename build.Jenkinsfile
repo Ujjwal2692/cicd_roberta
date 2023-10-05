@@ -1,14 +1,16 @@
 pipeline {
     agent any
-    environment {     
-    DOCKERHUB_CREDENTIALS= credentials('Dockerhub-id')     
-  }   
+   environment {
+registry = "ujjwal2692/jenkins_build"
+registryCredential = 'Dockerhub-id'
+dockerImage = ''
+   }
     stages {
         stage('Build') {
             steps {
                
                 bat '''
-                echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
+                docker.withRegistry( '', registryCredential )
                 docker build -t cicd_roberta:0.0.1 .
                 docker tag cicd_roberta:0.0.1 ujjwal2692/jenkins_build:0.0.1
                 docker push ujjwal2692/jenkins_build:0.0.1
