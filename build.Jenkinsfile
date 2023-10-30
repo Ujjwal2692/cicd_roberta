@@ -5,7 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                
-                bat 'echo "first build completed"'
+                bat ''' 
+                echo "first build completed"
+                echo "adding second line"
+
+                '''
             }
         }
         
