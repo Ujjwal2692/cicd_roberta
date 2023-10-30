@@ -7,7 +7,7 @@ pipeline {
                
                 bat ''' 
                 echo "first build completed"
-                docker build -t Ujjwal2692/firstimage:1.0 .
+                docker build -t ujjwal2692/firstimage:1.0 .
                 '''
             }
         }
