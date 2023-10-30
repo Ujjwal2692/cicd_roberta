@@ -11,6 +11,16 @@ pipeline {
                 '''
             }
         }
-        
+        stage('pushing to dockerhub'){
+            steps{
+              withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerpwd')]) {
+                bat '''
+                docker login -u ujjwal2692 -p ${dockerpwd}
+                '''
+              }
+                bat 'docker push ujjwal2692/firstimage:1.0'
+            }
+
+        }
     }
 }
