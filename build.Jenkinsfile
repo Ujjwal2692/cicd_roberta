@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                
-                sh 'echo "Hello World"'
+                bat 'echo "Hello World"'
             }
         }
         
